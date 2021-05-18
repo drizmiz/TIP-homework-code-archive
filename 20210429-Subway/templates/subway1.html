@@ -1,0 +1,48 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.1.1/dist/echarts.min.js"></script>
+</head>
+
+<body>
+    <div id="pist" style="width: 600px; height:400px;"></div>
+    <div id="pisc" style="width: 600px; height:400px;"></div>
+
+    <script type="text/javascript">
+        var pistChart = echarts.init(document.getElementById('pist'));
+        var piscChart = echarts.init(document.getElementById('pisc'));
+
+        var option = {
+            title: { text: "PeopleInSubwayTime" },
+            tooltip: {},
+            legend: {
+                data: ['人数']
+            },
+            toolbox: {
+                feature: {
+                    magicType: { type: ['line', 'bar'] }
+                }
+            },
+            xAxis: { data: {{ pist_x_axis_data| safe}} },
+            yAxis: { },
+            series: [
+                { name: 'DiffInMin', type: 'bar', data: {{ pist_series_data| safe}} },
+            ]
+        };
+
+        pistChart.setOption(option);
+
+        option.legend = { data: ['地铁内人数（时段结束时）'] }
+        option.xAxis = { data: {{ pisc_x_axis_data | safe }} };
+        option.series = [
+            { name: '时段', type: 'line', data: {{ pisc_series_data| safe}} },
+        ];
+
+        piscChart.setOption(option);
+    </script>
+</body>
+
+</html>

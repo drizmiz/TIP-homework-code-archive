@@ -1,0 +1,32 @@
+
+<!doctype html>
+
+<html>
+    <head>
+        <meta charset="UTF-8" /> 
+        <style type="text/css">
+            th {text-align: center;}
+            td {text-align: center;}
+            div.stateDiv {height: 24px;}
+        </style>
+    </head>
+    <body>
+        {{stu_ord|safe}}
+        <form action="/" method="get">
+            <label><input type="radio" name="type" value="姓名" />姓名</label>       
+            <label><input type="radio" name="type" value="平时成绩" />平时成绩</label>       
+            <label><input type="radio" name="type" value="期中成绩" />期中成绩</label>       
+            <label><input type="radio" name="type" value="期末成绩" />期末成绩</label>       
+            <label><input type="radio" name="type" value="总成绩" />总成绩</label>
+            <br />   
+            <label><input type="radio" name="order" value="升序" />升序</label>       
+            <label><input type="radio" name="order" value="降序" />降序</label>
+            <br />
+            <input type="submit" value="提交" />
+        </form>
+        <table cellpadding='0' cellspacing='0' border='1'>
+            <tr><th>姓名</th><th>平时成绩</th><th>期中成绩</th><th>期末成绩</th><th>总成绩</th><th>可视</th></tr>
+{{stu_data|safe}}
+        </table>
+    </body>
+</html>
